@@ -15,26 +15,21 @@ describe("BankAccount", () => {
     expect(account.currentBalance()).toEqual(100);
   });
   
-
-
+  it("user can deposit twice", () => {
+    account.deposit(100);
+    account.deposit(200);
+    expect(account.currentBalance()).toEqual(300);
+  });
   
-  //   it("can deposit money", () => {  
-  //   account1 = new BankAccount();
-  //   account1.deposit(100);
-  //   console.log(account1);
-  //   expect(account1.currentBalance).toBe([100]);
-  // });
-
-  // new acc has 0 balance
-  // can deposit money
-  // can withdraw money
-  // add twice
-  // withdraw twice
-
-  // balance check, deposit, withdraw or close a closed account = throws error
-  // open already open account throws error
-  // cannot withdraw more than deposited
-  //cannot withdraw negative amount
-  // cant deposit negative amount
-
+  it("user can withdraw money", () => {
+    account.deposit(100);
+    account.withdraw(50);
+    expect(account.currentBalance()).toEqual(50);
+  });
 });
+
+// balance check, deposit, withdraw or close a closed account = throws error
+// open already open account throws error
+// cannot withdraw more than deposited
+//cannot withdraw negative amount
+// cant deposit negative amount
