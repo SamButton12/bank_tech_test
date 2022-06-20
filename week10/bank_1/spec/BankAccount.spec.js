@@ -26,7 +26,11 @@ describe("BankAccount", () => {
     account.withdraw(50);
     expect(account.balance).toEqual(50);
   });
-
+  
+  it("prints a statement of transactions", () => {
+    account.deposit(100);
+    expect(account.statement()).toEqual("date || credit || debit || balance");
+  });
 });
 
 // balance check, deposit, withdraw or close a closed account = throws error

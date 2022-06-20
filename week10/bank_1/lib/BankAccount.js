@@ -12,6 +12,9 @@ class BankAccount {
     this.balance -= money;
   }
 
+  statement() {
+    return "date || credit || debit || balance"
+  }
 };
 
 module.exports = BankAccount;
