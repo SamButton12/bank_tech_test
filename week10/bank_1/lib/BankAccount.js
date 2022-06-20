@@ -4,6 +4,14 @@ class BankAccount {
     this.balance = 0;
   };
 
+  deposit(money) {
+    this.balance += money;
+  };
+
+  currentBalance() {
+    return this.balance;
+  }
+
 };
 
 module.exports = BankAccount;
