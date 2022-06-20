@@ -12,20 +12,21 @@ describe("BankAccount", () => {
 
   it("user can deposit money", () => {
     account.deposit(100);
-    expect(account.currentBalance()).toEqual(100);
+    expect(account.balance).toEqual(100);
   });
   
   it("user can deposit twice", () => {
     account.deposit(100);
     account.deposit(200);
-    expect(account.currentBalance()).toEqual(300);
+    expect(account.balance).toEqual(300);
   });
   
   it("user can withdraw money", () => {
     account.deposit(100);
     account.withdraw(50);
-    expect(account.currentBalance()).toEqual(50);
+    expect(account.balance).toEqual(50);
   });
+
 });
 
 // balance check, deposit, withdraw or close a closed account = throws error
