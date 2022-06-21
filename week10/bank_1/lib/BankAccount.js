@@ -1,7 +1,10 @@
+const Transaction = require('./Transaction');
+
 class BankAccount {
   
   constructor(balance) {
     this.balance = 0;
+    this.transaction = [];
   };
 
   deposit(money) {
@@ -12,9 +15,10 @@ class BankAccount {
     this.balance -= money;
   }
 
-  statement() {
-    return "date || credit || debit || balance"
+  printStatement() {
+    return 'date || credit || debit || balance';
   }
+
 };
 
 module.exports = BankAccount;
