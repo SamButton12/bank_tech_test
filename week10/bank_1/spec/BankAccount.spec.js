@@ -39,6 +39,11 @@ describe("BankAccount", () => {
     it("returns an empty statement for an empty bank account", () => {  
       expect(account.printStatement()).toEqual('date || credit || debit || balance')
     });
+
+    it("displays a statement with one deposit", () => {
+      account.deposit(100);
+      expect(account.printStatement()).toEqual('date || credit || debit || balance\n21/06/22 || 100.00 || || 100.00');
+    });
   });
 });
 

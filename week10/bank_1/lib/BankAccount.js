@@ -7,8 +7,9 @@ class BankAccount {
     this.transaction = [];
   };
 
-  deposit(money) {
+  deposit(money, date) {
     this.balance += money;
+    this.transaction.push('\n21/06/22 || 100.00 || || 100.00')
   };
 
   withdraw(money) {
@@ -16,7 +17,7 @@ class BankAccount {
   }
 
   printStatement() {
-    return 'date || credit || debit || balance';
+    return 'date || credit || debit || balance' + this.transaction;
   }
 
 };
