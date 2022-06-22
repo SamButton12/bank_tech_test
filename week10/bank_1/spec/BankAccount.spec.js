@@ -16,22 +16,22 @@ describe("BankAccount", () => {
 
   describe("deposit", () => {
     it("user can deposit money", () => {
-      account.deposit(100);
-      expect(account.balance).toEqual(100);
+      account.deposit(100, '21/06/22');
+      expect(account.balance).toEqual(100.00);
     });
     
     it("user can deposit twice", () => {
-      account.deposit(100);
-      account.deposit(200);
-      expect(account.balance).toEqual(300);
+      account.deposit(100, '21/06/22');
+      account.deposit(200, '21/06/22');
+      expect(account.balance).toEqual(300.00);
     });
   });
     
   describe("withdraw", () => {
     it("user can withdraw money", () => {
-      account.deposit(100);
+      account.deposit(100, '21/06/22');
       account.withdraw(50);
-      expect(account.balance).toEqual(50);
+      expect(account.balance).toEqual(50.00);
     });
   });
     
@@ -41,8 +41,20 @@ describe("BankAccount", () => {
     });
 
     it("displays a statement with one deposit", () => {
-      account.deposit(100);
+      account.deposit(100, '21/06/22');
       expect(account.printStatement()).toEqual('date || credit || debit || balance\n21/06/22 || 100.00 || || 100.00');
+    });
+    
+    it("displays a statement with two different deposits", () => {
+      account.deposit(100, '21/06/22');
+      account.deposit(99.99, '22/06/22');
+      expect(account.printStatement()).toEqual('date || credit || debit || balance\n21/06/22 || 100.00 || || 100.00,\n22/06/22 || 99.99 || || 199.99');
+    });
+    
+    it("displays a statement with two different withdrawals", () => {
+      account.withdraw(100, '21/06/22');
+      account.withdraw(99.99, '22/06/22');
+      expect(account.printStatement()).toEqual('date || credit || debit || balance\n21/06/22 || || 100.00 || -100.00,\n22/06/22 || || 99.99 || -199.99');
     });
   });
 });
