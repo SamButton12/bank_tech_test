@@ -20,6 +20,7 @@ class Transaction {
 		this.transactions.forEach((transaction) => {
 			console.log(transaction);
 		});
+		return;
 	}
 
 	newDate() {
