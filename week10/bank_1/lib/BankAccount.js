@@ -1,26 +1,27 @@
+/* eslint-disable no-undef */
 const Transaction = require('./Transaction');
+
 
 class BankAccount {
   
-  constructor() {
-    this.balance = 0;
-    this.transaction = [];
-  };
+	constructor(transaction) {
+		this.balance = 0;
+		this.transaction = transaction || new Transaction();
+	}
 
-  deposit(money, date) {    
-    this.balance +=  money;
-    this.transaction.push(`\n${date} || ${money.toFixed(2)} || || ${this.balance.toFixed(2)}`);
-  };
+	deposit(money) {    
+		this.balance +=  money;
+		this.transaction.addDepositTransaction(money.toFixed(2), this.balance.toFixed(2));
+	}
   
-  withdraw(money, date) {
-    this.balance -= money;
-    this.transaction.push(`\n${date} || || ${money.toFixed(2)} || ${this.balance.toFixed(2)}`);
-  }
+	withdraw(money) {
+		this.balance -= money;
+		this.transaction.addWithdrawTransaction(money.toFixed(2), this.balance.toFixed(2));
+	}
 
-  printStatement() {
-    return 'date || credit || debit || balance' + this.transaction;
-  }
-
-};
+	printStatement() {
+		return this.transaction.getTransactions();
+	}
+}
 
 module.exports = BankAccount;
